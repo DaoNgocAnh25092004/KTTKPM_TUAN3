@@ -61,7 +61,7 @@ export class Stock implements Subject {
     this.previousPrice = this.price;
     this.price = price;
     console.log(
-      `\n📊 Stock ${this.symbol}: Giá thay đổi từ $${this.previousPrice} → $${this.price}`,
+      `\nStock ${this.symbol}: Giá thay đổi từ $${this.previousPrice} -> $${this.price}`,
     );
     this.notify();
   }

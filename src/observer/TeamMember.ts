@@ -23,7 +23,7 @@ export class TeamMember implements Observer {
     if (subject instanceof Task) {
       const statusIcon = subject.getStatusIcon();
 
-      console.log(`  👥 ${this.name} (${this.role}) nhận thông báo:`);
+      console.log(`   ${this.name} (${this.role}) nhận thông báo:`);
       console.log(
         `    ${statusIcon} Task: "${subject.getName()}" | ` +
           `Status: ${subject.getStatus()} | ` +

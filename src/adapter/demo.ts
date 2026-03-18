@@ -214,19 +214,19 @@ console.log("USE CASES THỰC TẾ:");
 console.log("=".repeat(70));
 
 console.log(`
-🔹 API Integration:
+- API Integration:
    - Chuyển đổi giữa REST API (JSON) và SOAP API (XML)
    - Tích hợp với payment gateways có format khác nhau
 
-🔹 Legacy System Integration:
+- Legacy System Integration:
    - Kết nối hệ thống mới với hệ thống cũ
    - Migrate dần từ XML sang JSON
 
-🔹 Data Migration:
+- Data Migration:
    - Chuyển đổi dữ liệu giữa các database khác nhau
    - Export/Import dữ liệu với nhiều format
 
-🔹 Third-party Services:
+- Third-party Services:
    - Tích hợp với các dịch vụ bên ngoài
    - Standardize data format trong microservices
 `);

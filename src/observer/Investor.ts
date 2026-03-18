@@ -20,13 +20,13 @@ export class Investor implements Observer {
       const priceChange = subject.getPriceChange();
       const trend =
         priceChange > 0
-          ? "📈 TĂNG"
+          ? " TĂNG"
           : priceChange < 0
-            ? "📉 GIẢM"
-            : "➡️ KHÔNG ĐỔI";
+            ? " GIẢM"
+            : " KHÔNG ĐỔI";
 
       console.log(
-        `  👤 ${this.name} nhận thông báo: ` +
+        `   ${this.name} nhận thông báo: ` +
           `${subject.getSymbol()} = $${subject.getPrice()} ` +
           `(${trend} ${Math.abs(priceChange).toFixed(2)}%)`,
       );

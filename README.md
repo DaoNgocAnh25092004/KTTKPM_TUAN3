@@ -2,10 +2,22 @@
 
 ## Mô tả
 
-Triển khai hai Design Pattern phổ biến trong lập trình hướng đối tượng:
+Triển khai các Design Pattern phổ biến trong lập trình hướng đối tượng:
+
+### Phần 1: Patterns cơ bản
 
 1. **Observer Pattern** - Hệ thống thông báo tự động (Stock Market & Task Management)
 2. **Adapter Pattern** - Chuyển đổi dữ liệu JSON/XML
+
+### Phần 2: Hệ thống quản lý thư viện (Library Management System)
+
+**Bài tập chính:** Thiết kế hệ thống quản lý thư viện sử dụng 5 Design Patterns:
+
+3. **Singleton Pattern** - Quản lý instance duy nhất của thư viện
+4. **Factory Method Pattern** - Tạo các loại sách khác nhau (Physical, Digital, Audio)
+5. **Strategy Pattern** - Các chiến lược tìm kiếm sách khác nhau
+6. **Observer Pattern** - Hệ thống thông báo cho nhân viên và người dùng
+7. **Decorator Pattern** - Mở rộng chức năng mượn sách với các dịch vụ bổ sung
 
 ## Công nghệ sử dụng
 
@@ -29,21 +41,41 @@ Triển khai hai Design Pattern phổ biến trong lập trình hướng đối 
 │   └── adapter-sequence-diagram.puml
 │
 ├── src/
-│   ├── observer/               # Observer Pattern
+│   ├── observer/               # Observer Pattern (Stock Market & Tasks)
 │   │   ├── interfaces.ts
 │   │   ├── Stock.ts
 │   │   ├── Investor.ts
 │   │   ├── Task.ts
 │   │   ├── TeamMember.ts
 │   │   ├── demo.ts
-│   │   ├── stock-market-demo.ts    # Demo chi tiết Stock Market
-│   │   └── STOCK-MARKET-README.md  # Tài liệu Stock Market
+│   │   ├── stock-market-demo.ts
+│   │   └── STOCK-MARKET-README.md
 │   │
-│   └── adapter/                # Adapter Pattern
-│       ├── JSONService.ts
-│       ├── XMLDataService.ts
-│       ├── XMLToJSONAdapter.ts
-│       └── demo.ts
+│   ├── adapter/                # Adapter Pattern (JSON/XML)
+│   │   ├── JSONService.ts
+│   │   ├── XMLDataService.ts
+│   │   ├── XMLToJSONAdapter.ts
+│   │   └── demo.ts
+│   │
+│   └── library/                # Library Management System
+│       ├── interfaces/         # Core interfaces
+│       │   └── index.ts
+│       ├── models/             # Base models
+│       │   └── index.ts
+│       ├── patterns/           # Design Patterns implementation
+│       │   ├── singleton/      # Singleton Pattern
+│       │   │   └── Library.ts
+│       │   ├── factory/        # Factory Method Pattern
+│       │   │   └── BookFactory.ts
+│       │   ├── strategy/       # Strategy Pattern
+│       │   │   └── SearchStrategy.ts
+│       │   ├── observer/       # Observer Pattern
+│       │   │   └── LibraryObserver.ts
+│       │   └── decorator/      # Decorator Pattern
+│       │       └── BorrowDecorator.ts
+│       ├── demo/               # Comprehensive demo
+│       │   └── LibraryDemo.ts
+│       └── index.ts            # Main exports
 │
 ├── package.json
 ├── tsconfig.json
@@ -68,29 +100,34 @@ npm run build
 
 ## Chạy Demo
 
-### Observer Pattern - Stock & Task Notification
+### Phần 1: Observer & Adapter Patterns
+
+#### Observer Pattern - Stock & Task Notification
 
 **Demo đầy đủ (Stock Market + Task Management):**
+
 ```bash
 npm run start:observer
 ```
 
 **Demo chỉ Stock Market (Chi tiết 4 kịch bản):**
+
 ```bash
 npm run start:stock
 ```
 
 **Kết quả demo:**
-- ✅ Hệ thống theo dõi giá cổ phiếu real-time
-- ✅ Thông báo tự động cho nhà đầu tư khi giá thay đổi
-- ✅ Quản lý trạng thái công việc
-- ✅ Thông báo cho team members
-- ✅ Portfolio management system
-- ✅ Price alert & automated trading simulation
 
-📖 **Tài liệu chi tiết Stock Market**: `src/observer/STOCK-MARKET-README.md`
+- Hệ thống theo dõi giá cổ phiếu real-time
+- Thông báo tự động cho nhà đầu tư khi giá thay đổi
+- Quản lý trạng thái công việc
+- Thông báo cho team members
+- Portfolio management system
+- Price alert & automated trading simulation
 
-### Adapter Pattern - JSON/XML Conversion
+**Tài liệu chi tiết Stock Market**: `src/observer/STOCK-MARKET-README.md`
+
+#### Adapter Pattern - JSON/XML Conversion
 
 ```bash
 npm run start:adapter
@@ -98,15 +135,40 @@ npm run start:adapter
 
 **Kết quả demo:**
 
-- Chuyển đổi JSON ↔ XML
+- Chuyển đổi JSON  XML
 - Tích hợp với hệ thống legacy
 - Web service integration
 - Configuration management
 - Multiple data formats
 
+### Phần 2: Library Management System
+
+#### Comprehensive Library System Demo
+
+```bash
+npm run start:library
+```
+
+**Kết quả demo:**
+
+- **Singleton Pattern**: Quản lý instance duy nhất của Library
+- **Factory Method Pattern**: Tạo các loại sách (Physical, Digital, Audio)
+- **Strategy Pattern**: Tìm kiếm sách theo title, author, genre, fuzzy search
+- **Observer Pattern**: Thông báo real-time cho staff, users, admin
+- **Decorator Pattern**: Enhanced borrowing services với các tính năng mở rộng
+
+**Tính năng chính:**
+
+- Quản lý sách và người dùng
+- Hệ thống mượn/trả sách
+- Tìm kiếm thông minh với nhiều chiến lược
+- Thông báo tự động khi có sự kiện
+- Dịch vụ mượn sách với các gói nâng cấp
+- Thống kê và báo cáo hệ thống
+
 ## Chi tiết từng Pattern
 
-### 1. Observer Pattern
+### 1. Observer Pattern (Stocks & Tasks)
 
 **Vấn đề giải quyết:**
 
@@ -141,7 +203,7 @@ npm run start:adapter
 
 **Ứng dụng:**
 
-- Chuyển đổi JSON ↔ XML
+- Chuyển đổi JSON  XML
 - API integration
 - Database migration
 - Third-party service integration
@@ -156,6 +218,147 @@ npm run start:adapter
 
 - Sơ đồ: `images/adapter.png`
 - Code: `src/adapter/`
+
+## Library Management System - Design Patterns Chi Tiết
+
+### 3. Singleton Pattern (Library Management)
+
+**Vấn đề giải quyết:**
+
+- Đảm bảo chỉ có một instance duy nhất của Library trong hệ thống
+- Quản lý trạng thái toàn cục của thư viện
+
+**Implementation:**
+
+```typescript
+export class Library implements ILibrarySubject {
+  private static instance: Library;
+  private constructor() {} // Private constructor
+
+  public static getInstance(): Library {
+    if (!Library.instance) {
+      Library.instance = new Library();
+    }
+    return Library.instance;
+  }
+}
+```
+
+**Ứng dụng:**
+
+- Quản lý tập trung tất cả sách và người dùng
+- Đảm bảo tính nhất quán dữ liệu
+- Điều phối các hoạt động mượn/trả sách
+
+### 4. Factory Method Pattern (Book Creation)
+
+**Vấn đề giải quyết:**
+
+- Tạo ra các loại sách khác nhau mà không cần specify concrete class
+- Mở rộng dễ dàng khi thêm loại sách mới
+
+**Các loại sách được hỗ trợ:**
+
+- **PhysicalBook**: Sách giấy với ISBN, vị trí, tình trạng
+- **DigitalBook**: Sách điện tử với format, file size, download URL
+- **AudioBook**: Sách nói với narrator, duration, chapters
+
+**Implementation:**
+
+```typescript
+export abstract class BookFactory {
+  abstract createBook(...params): IBook;
+  abstract getBookType(): BookType;
+}
+
+// Usage
+const factory = BookFactoryCreator.createFactory(BookType.DIGITAL);
+const book = factory.createBook("Clean Code", "Robert Martin", "Tech", 2008);
+```
+
+### 5. Strategy Pattern (Search Strategies)
+
+**Vấn đề giải quyết:**
+
+- Cần nhiều cách tìm kiếm sách khác nhau
+- Có thể thay đổi thuật toán tìm kiếm runtime
+
+**Các chiến lược được implement:**
+
+- **TitleSearchStrategy**: Tìm theo tên sách
+- **AuthorSearchStrategy**: Tìm theo tác giả
+- **GenreSearchStrategy**: Tìm theo thể loại
+- **YearSearchStrategy**: Tìm theo năm xuất bản
+- **FuzzySearchStrategy**: Tìm kiếm mờ (smart search)
+- **AdvancedSearchStrategy**: Tìm kiếm tất cả trường
+
+**Implementation:**
+
+```typescript
+const searchContext = new BookSearchContext(new TitleSearchStrategy());
+const results = searchContext.search(books, "JavaScript");
+
+// Change strategy at runtime
+searchContext.setStrategy(new FuzzySearchStrategy());
+```
+
+### 6. Observer Pattern (Notification System)
+
+**Vấn đề giải quyết:**
+
+- Thông báo tự động cho nhiều bên khi có sự kiện
+- Loosely coupled notification system
+
+**Các Observer được implement:**
+
+- **LibraryStaff**: Nhận thông báo về hoạt động thư viện
+- **MemberNotificationService**: Gửi email cho members
+- **SystemAdministrator**: Monitor hệ thống và statistics
+- **InventoryManager**: Quản lý tồn kho
+
+**Events được hỗ trợ:**
+
+- `BOOK_ADDED`: Sách mới được thêm
+- `BOOK_BORROWED`: Sách được mượn
+- `BOOK_RETURNED`: Sách được trả
+- `BOOK_OVERDUE`: Sách quá hạn
+
+### 7. Decorator Pattern (Enhanced Borrowing)
+
+**Vấn đề giải quyết:**
+
+- Mở rộng chức năng mượn sách mà không sửa code gốc
+- Kết hợp nhiều tính năng một cách linh hoạt
+
+**Các Decorator được implement:**
+
+- **ExtendedPeriodDecorator**: Gia hạn thời gian mượn
+- **PriorityBorrowingDecorator**: Ưu tiên mượn sách
+- **SpecialEditionDecorator**: Phiên bản đặc biệt (Braille, large-print, etc.)
+- **DigitalAccessDecorator**: Truy cập số với nhiều level
+- **InsuranceDecorator**: Bảo hiểm cho sách
+- **HomeDeliveryDecorator**: Giao sách tận nhà
+
+**Usage với Builder Pattern:**
+
+```typescript
+const premiumService = new BorrowServiceBuilder()
+  .withExtendedPeriod(30, 10000)
+  .withPriority("high")
+  .withDigitalAccess("premium")
+  .withInsurance("comprehensive")
+  .withHomeDelivery("123 Main St", "express")
+  .build();
+
+const transaction = premiumService.borrowBook(bookId, userId);
+```
+
+**Predefined Packages:**
+
+- **StudentPackage**: Gói cho sinh viên
+- **PremiumPackage**: Gói premium đầy đủ
+- **AccessibilityPackage**: Gói hỗ trợ người khuyết tật
+- **ConveniencePackage**: Gói tiện lợi cơ bản
 
 ## Sơ đồ UML
 
@@ -185,33 +388,6 @@ Sơ đồ UML cho Adapter Pattern cho thấy cách Adapter kết nối giữa in
 - **XMLToJSONAdapter**: Adapter chuyển đổi giữa JSON và XML
 - **Client**: Sử dụng JSONService interface
 
-## Lợi ích của các Pattern
-
-### Observer Pattern
-
-Loose coupling giữa Subject và Observer
-Dynamic relationships
-Broadcast communication
-
-### Adapter Pattern
-
-Single Responsibility Principle
-Open/Closed Principle
-Tái sử dụng code legacy
-Flexibility cao
-
-## Best Practices
-
-1. **Observer Pattern**
-   - Luôn detach observer khi không cần để tránh memory leak
-   - Cân nhắc weak references trong một số trường hợp
-   - Xử lý circular dependencies cẩn thận
-
-2. **Adapter Pattern**
-   - Sử dụng thư viện chuẩn cho parsing (xml2js, fast-xml-parser)
-   - Cache kết quả chuyển đổi nếu cần
-   - Validate dữ liệu đầu vào và đầu ra
-
 ## Scripts có sẵn
 
 ```bash
@@ -227,6 +403,9 @@ npm run start:stock
 # Chạy demo Adapter Pattern
 npm run start:adapter
 
+#  Chạy demo Library Management System (5 Design Patterns)
+npm run start:library
+
 # Chạy bất kỳ file TypeScript nào
 npm run dev <file-path>
 ```
@@ -236,9 +415,9 @@ npm run dev <file-path>
 ### Observer Pattern Output
 
 ```
-📊 Stock AAPL: Giá thay đổi từ $150 → $160
+ Stock AAPL: Giá thay đổi từ $150 → $160
 Stock AAPL: Đang thông báo cho các observers...
-  👤 Nguyễn Văn A nhận thông báo: AAPL = $160 (📈 TĂNG 6.67%)
+   Nguyễn Văn A nhận thông báo: AAPL = $160 ( TĂNG 6.67%)
     → Nguyễn Văn A: Cân nhắc BÁN để chốt lời!
   ...
 ```
@@ -258,4 +437,106 @@ XMLDataService: Đã xử lý dữ liệu XML
   </user>
 </root>
 --- End XML ---
+```
+
+###  Library Management System Output
+
+```
+ ===== LIBRARY MANAGEMENT SYSTEM DEMO =====
+
+ Khởi tạo Library System (Singleton Pattern)
+
+ === SINGLETON PATTERN DEMO ===
+Library instance 1 === Library instance 2: true
+Library instance 2 === Library instance 3: true
+All instances point to the same object: true
+ Singleton Pattern verified
+
+ === FACTORY METHOD PATTERN DEMO ===
+ Đã thêm sách: "The Great Gatsby" by F. Scott Fitzgerald
+ Gửi email đến an.nguyen@email.com:  Sách mới: "Clean Code"
+ [INVENTORY] Added "Clean Code" to Technology collection
+
+ Sách điện tử: JavaScript: The Good Parts by Douglas Crockford
+    Format: EPUB
+    Size: 25 MB
+    DRM: Yes
+
+ Sách nói: Atomic Habits by James Clear
+    Người đọc: Emma Watson
+    Thời lượng: 487 phút
+    Format: MP3
+    Số chương: 12
+
+ === OBSERVER PATTERN DEMO ===
+ Staff: Nguyễn Thị Linh (Circulation) đã đăng ký nhận thông báo
+‍ Nguyễn Thị Linh: Sách mới "React Patterns" đã được thêm vào hệ thống
+ Gửi email đến cuong.le@email.com:  Sách mới: "React Patterns" (Technology)
+ [SYSTEM] BOOK_ADDED event logged at 18/3/2026, 7:30:45 PM
+
+ === STRATEGY PATTERN DEMO ===
+ Đã chuyển sang chiến lược: Title Search
+ Tìm kiếm "Gatsby" bằng Title Search
+ Tìm thấy 1 kết quả
+    "The Great Gatsby" by F. Scott Fitzgerald (Fiction, 1925)
+
+ Đã chuyển sang chiến lược: Fuzzy Search (Smart)
+ Tìm kiếm "pattrn" bằng Fuzzy Search (Smart)
+ Tìm thấy 2 kết quả
+    "Design Patterns" by Gang of Four (Technology, 1994)
+    "React Patterns" by Michael Chan (Technology, 2023)
+
+ === DECORATOR PATTERN DEMO ===
+
+1 Basic Borrowing Service:
+   Description: Basic book borrowing (14 days)
+   Cost: 0 VND
+
+2 Premium Borrowing Service (Multiple Decorators):
+   Description: Basic book borrowing (14 days) + Extended period (+30 days) + Priority borrowing (high) + Digital access (premium) + Insurance (comprehensive) + Home delivery (express)
+   Total Cost: 98,000 VND
+
+ Borrowing "The Great Gatsby" with premium service:
+
+ Basic borrowing: Book B1 for User U1
+   Due date: 1/4/2026
+ Extended period: +30 days (New due: 1/5/2026)
+ Extra fee: 10,000 VND
+ Priority borrowing: HIGH level
+    Skip waiting queue
+    Notification when available
+ Priority fee: 10,000 VND
+ Digital access: PREMIUM level
+    Mobile app access
+    Multiple format downloads
+    Audio version included
+    Note-taking features
+ Digital access fee: 15,000 VND
+ Insurance: COMPREHENSIVE coverage
+    Water & fire damage coverage
+    Lost book replacement
+ Insurance fee: 8,000 VND
+ Home delivery: EXPRESS
+    Address: 123 Main St, Ho Chi Minh City
+    Next business day delivery
+ Delivery fee: 40,000 VND
+
+ Transaction ID: T1710777045123
+ Total Service Cost: 98,000 VND
+
+ === ADVANCED FEATURES DEMO ===
+ Nguyễn Văn An đã mượn sách "The Great Gatsby"
+ Library Statistics:
+   Total Books: 9
+   Available Books: 8
+   Borrowed Books: 1
+   Total Users: 4
+
+ Search Strategy Comparison:
+   Title Search: 1 results
+   Author Search: 0 results
+   Advanced Search (All Fields): 1 results
+   Fuzzy Search (Smart): 1 results
+
+ Demo completed successfully!
 ```

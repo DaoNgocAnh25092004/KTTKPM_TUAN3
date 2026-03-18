@@ -78,7 +78,7 @@ export class Task implements Subject {
     const oldAssignee = this.assignee;
     this.assignee = assignee;
     console.log(
-      `\n👷 Task "${this.name}": Gán từ "${oldAssignee}" → "${assignee}"`,
+      `\n Task "${this.name}": Gán từ "${oldAssignee}" → "${assignee}"`,
     );
     this.notify();
   }
@@ -114,12 +114,12 @@ export class Task implements Subject {
    */
   public getStatusIcon(): string {
     const icons: { [key: string]: string } = {
-      TODO: "⏳",
-      IN_PROGRESS: "🔄",
-      REVIEW: "👀",
-      DONE: "✅",
-      BLOCKED: "🚫",
+      TODO: "[TODO]",
+      IN_PROGRESS: "[IN_PROGRESS]",
+      REVIEW: "[REVIEW]",
+      DONE: "[DONE]",
+      BLOCKED: "[BLOCKED]",
     };
-    return icons[this.status] || "❓";
+    return icons[this.status] || "[UNKNOWN]";
   }
 }
