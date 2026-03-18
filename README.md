@@ -33,13 +33,7 @@ Triển khai các Design Pattern phổ biến trong lập trình hướng đối
 ├── images/                     # Sơ đồ UML (PNG)
 │   ├── observer.png           # Observer Pattern UML
 │   └── adapter.png            # Adapter Pattern UML
-│
-├── diagrams/                   # PlantUML source files
-│   ├── observer-class-diagram.puml
-│   ├── observer-sequence-diagram.puml
-│   ├── adapter-class-diagram.puml
-│   └── adapter-sequence-diagram.puml
-│
+│   └── library.png             # Library System UML
 ├── src/
 │   ├── observer/               # Observer Pattern (Stock Market & Tasks)
 │   │   ├── interfaces.ts
@@ -104,30 +98,17 @@ npm run build
 
 #### Observer Pattern - Stock & Task Notification
 
+![Observer Pattern UML](images/observer.png)
+
 **Demo đầy đủ (Stock Market + Task Management):**
 
 ```bash
 npm run start:observer
 ```
 
-**Demo chỉ Stock Market (Chi tiết 4 kịch bản):**
-
-```bash
-npm run start:stock
-```
-
-**Kết quả demo:**
-
-- Hệ thống theo dõi giá cổ phiếu real-time
-- Thông báo tự động cho nhà đầu tư khi giá thay đổi
-- Quản lý trạng thái công việc
-- Thông báo cho team members
-- Portfolio management system
-- Price alert & automated trading simulation
-
-**Tài liệu chi tiết Stock Market**: `src/observer/STOCK-MARKET-README.md`
-
 #### Adapter Pattern - JSON/XML Conversion
+
+![Adapter Pattern UML](images/adapter.png)
 
 ```bash
 npm run start:adapter
@@ -135,7 +116,7 @@ npm run start:adapter
 
 **Kết quả demo:**
 
-- Chuyển đổi JSON  XML
+- Chuyển đổi JSON XML
 - Tích hợp với hệ thống legacy
 - Web service integration
 - Configuration management
@@ -144,6 +125,8 @@ npm run start:adapter
 ### Phần 2: Library Management System
 
 #### Comprehensive Library System Demo
+
+![Library Pattern UML](images/library.png)
 
 ```bash
 npm run start:library
@@ -203,7 +186,7 @@ npm run start:library
 
 **Ứng dụng:**
 
-- Chuyển đổi JSON  XML
+- Chuyển đổi JSON XML
 - API integration
 - Database migration
 - Third-party service integration
@@ -360,34 +343,6 @@ const transaction = premiumService.borrowBook(bookId, userId);
 - **AccessibilityPackage**: Gói hỗ trợ người khuyết tật
 - **ConveniencePackage**: Gói tiện lợi cơ bản
 
-## Sơ đồ UML
-
-### Observer Pattern
-
-Sơ đồ UML cho Observer Pattern minh họa mối quan hệ giữa Subject và Observer, cách các đối tượng tự động nhận thông báo khi trạng thái thay đổi.
-
-![Observer Pattern UML](images/observer.png)
-
-**Các thành phần chính:**
-
-- **Subject Interface**: Quản lý danh sách observers và thông báo khi có thay đổi
-- **Observer Interface**: Nhận cập nhật từ Subject
-- **Stock/Task**: Concrete Subjects lưu trữ trạng thái
-- **Investor/TeamMember**: Concrete Observers phản ứng với thay đổi
-
-### Adapter Pattern
-
-Sơ đồ UML cho Adapter Pattern cho thấy cách Adapter kết nối giữa interface không tương thích (JSON và XML).
-
-![Adapter Pattern UML](images/adapter.png)
-
-**Các thành phần chính:**
-
-- **JSONService**: Target interface mà Client mong đợi
-- **XMLDataService**: Adaptee - service hiện tại chỉ hỗ trợ XML
-- **XMLToJSONAdapter**: Adapter chuyển đổi giữa JSON và XML
-- **Client**: Sử dụng JSONService interface
-
 ## Scripts có sẵn
 
 ```bash
@@ -439,7 +394,7 @@ XMLDataService: Đã xử lý dữ liệu XML
 --- End XML ---
 ```
 
-###  Library Management System Output
+### Library Management System Output
 
 ```
  ===== LIBRARY MANAGEMENT SYSTEM DEMO =====
