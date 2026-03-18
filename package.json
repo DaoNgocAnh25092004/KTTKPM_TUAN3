@@ -1,0 +1,29 @@
+{
+  "name": "design-patterns-practice",
+  "version": "1.0.0",
+  "description": "Design Patterns Implementation: Observer, Adapter",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start:observer": "ts-node src/observer/demo.ts",
+    "start:stock": "ts-node src/observer/stock-market-demo.ts",
+    "start:adapter": "ts-node src/adapter/demo.ts",
+    "dev": "ts-node"
+  },
+  "keywords": [
+    "design-patterns",
+    "typescript",
+    "observer",
+    "adapter"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "xml2js": "^0.6.0"
+  }
+}
